@@ -7,7 +7,7 @@ export default async function authHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  res.setHeader("Access-Control-Allow-Origin", "https://knowledge-sharing-platform-ksp.vercel.app/");
+  res.setHeader("Access-Control-Allow-Origin", "https://knowledge-sharing-platform-ksp.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   const { method, headers } = req;

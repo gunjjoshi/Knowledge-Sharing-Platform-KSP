@@ -3,7 +3,7 @@ import axios from 'axios'
 let urls = {
     test: `http://localhost:3000`,
     development: `http://localhost:3000`,
-    production: `https://ksp-gunjjoshi.vercel.app/`,
+    production: `https://main.d1k4h2krxpbfq7.amplifyapp.com`,
 }
 
 export const api = axios.create({
