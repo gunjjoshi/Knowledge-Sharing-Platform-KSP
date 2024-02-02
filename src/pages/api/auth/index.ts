@@ -2,12 +2,14 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { adminAuth } from '../../../utils/firebaseAdminInit';
 import { firestore } from '../../../utils/firebaseInit';
 import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
-import cors from '../../../utils/cors';
 
-const authHandler = async(
+export default async function authHandler(
   req: NextApiRequest,
   res: NextApiResponse
-) => {
+) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   const { method, headers } = req;
 
   switch (method) {
@@ -51,5 +53,3 @@ const authHandler = async(
       });
   }
 }
-
-export default cors(authHandler);
