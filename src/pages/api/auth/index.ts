@@ -9,6 +9,10 @@ export default async function authHandler(
 ) {
   const { method, headers } = req;
 
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Authorization');
+
   switch (method) {
     case 'GET':
       if (headers && headers.authorization) {
