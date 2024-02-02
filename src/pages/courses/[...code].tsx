@@ -82,18 +82,26 @@ const Course: NextPage = ({}) => {
     }, [selectedCourseReview])
 
     useEffect(() => {
-        if (user && reviews) {
+        const checkUserReview = (reviews: any): boolean => {
           if (Array.isArray(reviews)) {
-            const userHasReviewed = reviews.find((review: any) => user.user_id === review.user_id);
-            setAlreadyReviewed(!!userHasReviewed);
+            const userHasReviewed = reviews.find(
+              (review: any) => review && review.user_id === user.user_id
+            );
+            return !!userHasReviewed;
           } else if (typeof reviews === 'object' && reviews !== null) {
             const reviewKeys = Object.keys(reviews);
-            const userHasReviewed = reviewKeys.some((key) => reviews[key].user_id === user.user_id);
-            setAlreadyReviewed(userHasReviewed);
+            const userHasReviewed = reviewKeys.some(
+              (key) => reviews[key] && reviews[key].user_id === user.user_id
+            );
+            return userHasReviewed;
           }
+          return false;
+        };
+      
+        if (user && reviews) {
+          setAlreadyReviewed(checkUserReview(reviews));
         }
       }, [reviews, user]);
-      
       
 
     return (
