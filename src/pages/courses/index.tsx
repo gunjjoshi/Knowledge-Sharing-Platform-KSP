@@ -144,9 +144,9 @@ export default function Courses() {
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                                 ></path>
                             </svg>
@@ -192,7 +192,7 @@ export default function Courses() {
                         courses
                             .filter((course: any) => {
                                 const regex = new RegExp(searchInput, 'i')
-                                console.log(regex)
+                                // console.log(regex)
 
                                 if (course.title.match(regex)) return true
                                 else return false
